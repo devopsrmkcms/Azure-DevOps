@@ -1,0 +1,17 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo "Starting pipeline..."
+  displayName: 'Start Message'
+
+- script: |
+    echo "Running tests..."
+    echo "Hello Azure DevOps"
+  displayName: 'Run Sample Test'
+
+- script: echo "Pipeline completed successfully!"
+  displayName: 'End Message'
