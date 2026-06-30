@@ -1,0 +1,65 @@
+# 1. trigger (CI/CD trigger)
+trigger:
+- main
+
+# 2. resources (external dependencies)
+resources:
+  repositories:
+  - repository: myrepo
+    type: git
+    name: devopsrmkcms/sample-app
+    ref: main
+
+# 3. parameters (runtime inputs)
+parameters:
+- name: environment
+  type: string
+  default: dev
+  values:
+  - dev
+  - test
+  - prod
+
+# 4. variables (config values)
+variables:
+  appName: demo-app
+  imageName: demo-image
+
+# 5. pool (agent config)
+pool:
+  vmImage: ubuntu-latest
+
+# 6. stages / jobs / steps (execution flow)
+stages:
+
+- stage: Build
+  displayName: Build Stage
+  jobs:
+  - job: BuildJob
+    steps:
+    - checkout: myrepo
+
+    - script: echo "Building $(appName) for ${{ parameters.environment }}"
+      displayName: Build Step
+
+- stage: Deploy
+  displayName: Deploy Stage
+  dependsOn: Build
+  condition: succeeded()
+  jobs:
+  - job: DeployJob
+    steps:
+    - script: echo "Deploying $(appName) to ${{ parameters.environment }}"
+      displayName: Deploy Step
+
+>>>>>>>>>>>>>>>>>
+
+
+trigger → runs pipeline when code pushed to main
+resources → pulls external repo
+parameters → user selects environment (dev/test/prod)
+variables → reusable values like app name
+pool → selects agent (Ubuntu VM)
+stages → divides pipeline into Build & Deploy
+jobs → logical units inside stage
+steps → actual commands
