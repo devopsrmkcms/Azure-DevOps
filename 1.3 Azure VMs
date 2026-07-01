@@ -194,4 +194,75 @@ Update Domain = Logical isolation for maintenance and reboot protection.
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+What is VMSS?
+VMSS = A service that creates and manages multiple identical VMs automatically.
+Instead of creating:
+VM1
+VM2
+VM3
+VM4
+
+manually, you create one VMSS, and Azure manages all VMs for you.
+
+Why Use VMSS?
+Auto Scaling
+
+Automatically adds VMs when load increases
+Automatically removes VMs when load decreases
+
+Example:
+CPU > 70% → Add 2 VMs
+CPU < 30% → Remove 2 VMs
+
+Uniform Configuration
+All VMs use:
+Same image
+Same OS
+Same application
+Same configuration
+
+Main Components
+VM Image
+Template used to create VMs.
+
+Scale Rules
+-- Rules that decide when to add/remove VMs.
+   Example:
+   -- CPU based
+   -- Memory based
+   -- Schedule based
+
+
+Scaling Types
+Manual Scaling
+Auto Scaling
+
+VMSS vs Availability Set
+Availability Set
+-- Prevents hardware failures
+-- Fixed number of VMs
+-- No auto scaling
+
+VMSS
+-- Auto scaling
+-- Load balancing
+-- High availability
+-- Auto repair
+
+Important VMSS Features
+Auto Scale
+Load Balancer Integration
+Availability Zones
+Auto Healing
+Rolling Upgrades
+Custom Images
+Spot VM Support
+Monitoring with Azure Monitor
+
+One-Line Interview Answer
+Azure VM Scale Set (VMSS) is a service that deploys and manages a group of 
+identical load-balanced virtual machines with automatic scaling and high availability.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
