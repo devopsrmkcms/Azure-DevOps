@@ -1,1 +1,139 @@
+What is VNet?
 
+Azure VNet is a private network in Azure
+Provides secure communication between Azure resources
+Similar to a traditional on-premises network in the cloud
+Foundation for Azure networking [learn.microsoft.com]
+
+
+Main Components
+Address Space
+
+IP range assigned to the VNet
+Defined using CIDR notation
+
+Example:
+Plain Text10.0.0.0/16Show more lines
+ [arindam-da...medium.com], [learn.microsoft.com]
+
+Subnets
+
+Divide VNet into smaller networks
+Used for logical separation
+
+Example:
+Plain TextVNet: 10.0.0.0/16Web Subnet : 10.0.1.0/24App Subnet : 10.0.2.0/24DB Subnet  : 10.0.3.0/24Show more lines
+ [arindam-da...medium.com], [medium.com]
+
+Network Interface (NIC)
+
+Connects VM to VNet
+Every VM needs a NIC
+
+ [learn.microsoft.com]
+
+IP Addresses
+Private IP
+
+Internal communication
+Assigned inside VNet
+
+Example:
+Plain Text10.0.1.4Show more lines
+Public IP
+
+Internet access
+Optional
+
+ [learn.microsoft.com]
+
+Security Components
+Network Security Group (NSG)
+
+Azure firewall at subnet/NIC level
+Controls inbound and outbound traffic
+
+Example:
+Plain TextAllow Port 22 (SSH)Allow Port 80 (HTTP)Block All OthersShow more lines
+ [arindam-da...medium.com], [medium.com]
+
+Azure Firewall
+
+Centralized network security
+L3-L7 traffic filtering
+
+
+Connectivity Options
+VNet Peering
+
+Connect two VNets
+Traffic stays on Microsoft backbone network
+Low latency
+
+Example:
+Plain TextVNet-A <----> VNet-BShow more lines
+ [azure.microsoft.com], [medium.com]
+
+VPN Gateway
+
+Connect Azure to On-Premises through Internet
+Encrypted IPSec tunnel
+
+Plain TextOn-Prem    | VPN    | Azure VNetShow more lines
+ [medium.com], [geeksforgeeks.org]
+
+ExpressRoute
+
+Private dedicated connection
+Does not use Internet
+More secure and lower latency
+
+ [azure.microsoft.com], [medium.com]
+
+Traffic Management
+Route Tables (UDR)
+
+Controls traffic path
+Custom routing
+
+Example:
+Plain TextAll Internet Traffic        ↓Azure FirewallShow more lines
+ [arindam-da...medium.com], [medium.com]
+
+Service Integration
+Service Endpoints
+
+Secure access to Azure services
+Storage Account
+SQL Database
+
+Private Endpoint
+
+Private IP access to Azure services
+No public internet exposure
+
+ [learn.microsoft.com]
+
+Common VNet Design
+VNet (10.0.0.0/16)
+├── Web Subnet (10.0.1.0/24)│     
+└── Web VMs│
+├── App Subnet (10.0.2.0/24)│     
+└── Application VMs│
+└── DB Subnet (10.0.3.0/24)      
+└── Database VMsShow more lines
+
+Key Interview Points
+
+VNet = Private network in Azure
+Subnet = Division of VNet
+NSG = Traffic filtering
+VNet Peering = Connect VNets
+VPN Gateway = Azure ⇄ On-Prem via Internet
+ExpressRoute = Private dedicated connection
+Private Endpoint = Private access to Azure services
+Route Table = Controls packet routing
+
+
+One-Line Interview Answer
+Azure VNet is a logically isolated private network in Azure that enables secure communication between Azure resources, on-premises environments, and the internet
